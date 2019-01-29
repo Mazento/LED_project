@@ -1,0 +1,115 @@
+body {
+  background-color: #e9ecef;
+}
+
+.btn-main-light {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently */
+  transition: 150ms !important;
+  margin: 2 rem;
+}
+
+.btn-main-light.red:hover {
+  background-color: red !important;
+}
+
+.btn-main-light.grey:hover {
+  background-color: #8f8f8f !important;
+}
+
+.tab:hover {
+  border-bottom: 2px solid rgba(255, 255, 255, .7);
+  transition: 50ms;
+}
+
+.fuck1 {
+  margin: 2rem !important;
+}
+
+.fuck2 {
+  width: 3.5rem !important;
+}
+
+.fuck3 {
+  margin: 2rem;
+}
+
+/* .separator {
+  width: 1px;
+  height: 100%;
+  padding: 0;
+  background-color: rgba(255, 255, 255, .3);
+} */
+.popover {
+  display: inline-block;
+  position: relative;
+}
+
+.popover .popover-container {
+  left: 50%;
+  opacity: 0;
+  padding: .4rem;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform .2s;
+  width: 320px;
+  z-index: 300;
+}
+
+.popover *:focus + .popover-container,
+.popover:hover .popover-container {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -100%) scale(1);
+}
+
+.popover.popover-right .popover-container {
+  left: 100%;
+  top: 50%;
+}
+
+.popover.popover-right *:focus + .popover-container,
+.popover.popover-right:hover .popover-container {
+  transform: translate(0, -50%) scale(1);
+}
+
+.popover.popover-bottom .popover-container {
+  left: 50%;
+  top: 100%;
+}
+
+.popover.popover-bottom *:focus + .popover-container,
+.popover.popover-bottom:hover .popover-container {
+  transform: translate(-50%, 0) scale(1);
+}
+
+.popover.popover-left .popover-container {
+  left: 0;
+  top: 50%;
+}
+
+.popover.popover-left *:focus + .popover-container,
+.popover.popover-left:hover .popover-container {
+  transform: translate(-100%, -50%) scale(1);
+}
+
+.popover .card {
+  border: 0;
+  box-shadow: 0 .2rem .5rem rgba(48, 55, 66, .3);
+}
+
+.ambi-container {
+  display: block;
+  min-height: 100%;
+}
+
+.colorPickerSend,
+.colorPickerSend i {
+  height: 45px;
+  margin-bottom: 6px;
+}
