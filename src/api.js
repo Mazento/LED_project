@@ -5,14 +5,14 @@ export default {
   async sendMainLight(gpio, cmd) {
     await fetch(`${URL_MAIN}/${cmd}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain" },
       body: [gpio]
     });
   },
   async sendAmbientLight(data) {
     await fetch(URL_AMBIENT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain" },
       body: JSON.stringify(data)
     });
   }
