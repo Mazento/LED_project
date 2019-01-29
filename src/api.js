@@ -6,7 +6,7 @@ export default {
     await fetch(`${URL_MAIN}/${cmd}`, {
       method: "POST",
       headers: { "Content-Type": "text/plain" },
-      body: [gpio]
+      body: JSON.stringify([gpio])
     });
   },
   async sendAmbientLight(data) {

@@ -24,18 +24,6 @@ class FullLightSystem extends React.Component {
         <div className="row valign-wrapper">
           <div className="col s1"/>
           <div className="col s4 card-panel white center-align">
-            <MainLightElement id="gpio1" />
-            <br />
-            <MainLightElement id="gpio2" />
-            <br />
-            <MainLightElement id="gpio3" />
-            <br />
-            <MainLightElement id="gpio4" />
-          </div>
-          <div className="col s2">
-            <AmbientLight />
-          </div>
-          <div className="col s4 card-panel white center-align">
             <MainLightElement id="gpio5" />
             <br />
             <MainLightElement id="gpio6" />
@@ -43,6 +31,18 @@ class FullLightSystem extends React.Component {
             <MainLightElement id="gpio7" />
             <br />
             <MainLightElement id="gpio8" />
+          </div>
+          <div className="col s2">
+            <AmbientLight />
+          </div>
+          <div className="col s4 card-panel white center-align">
+            <MainLightElement id="gpio4" />
+            <br />
+            <MainLightElement id="gpio3" />
+            <br />
+            <MainLightElement id="gpio2" />
+            <br />
+            <MainLightElement id="gpio1" />
           </div>          
           <div className="col s1"/>
         </div>
