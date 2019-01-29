@@ -18,31 +18,41 @@ class App extends Component {
 }
 
 class FullLightSystem extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        mainLightArray: []
+      };
+  }
+  async componentDidMount() {    
+    const response = await api.getMainLight();
+    this.setState({ mainLightArray: response || [] });
+  }
   render() {
     return (
       <div className="container">
         <div className="row valign-wrapper">
           <div className="col s1"/>
           <div className="col s4 card-panel white center-align">
-            <MainLightElement id="gpio5" />
+            <MainLightElement id="gpio5" status={ this.state.mainLightArray['gpio5'] } />
             <br />
-            <MainLightElement id="gpio6" />
+            <MainLightElement id="gpio6" status={ this.state.mainLightArray['gpio6'] } />
             <br />
-            <MainLightElement id="gpio7" />
+            <MainLightElement id="gpio7" status={ this.state.mainLightArray['gpio7'] } />
             <br />
-            <MainLightElement id="gpio8" />
+            <MainLightElement id="gpio8" status={ this.state.mainLightArray['gpio8'] } />
           </div>
           <div className="col s2">
             <AmbientLight />
           </div>
           <div className="col s4 card-panel white center-align">
-            <MainLightElement id="gpio4" />
+            <MainLightElement id="gpio4" status={ this.state.mainLightArray['gpio4'] } />
             <br />
-            <MainLightElement id="gpio3" />
+            <MainLightElement id="gpio3" status={ this.state.mainLightArray['gpio3'] } />
             <br />
-            <MainLightElement id="gpio2" />
+            <MainLightElement id="gpio2" status={ this.state.mainLightArray['gpio2'] } />
             <br />
-            <MainLightElement id="gpio1" />
+            <MainLightElement id="gpio1" status={ this.state.mainLightArray['gpio1'] } />
           </div>          
           <div className="col s1"/>
         </div>
@@ -56,13 +66,13 @@ class MainLightElement extends React.Component {
       super(props);
       this.state = {
         id: props.id,
-        value: props.value
+        status: props.status
       };
   }
   render() {
     return (
       <div className="popover popover-right">
-        <MainLightLed status={ true } id={ this.state.id } />
+        <MainLightLed id={ this.state.id } status={ this.state.status } />
         <MainLightSlider id={ this.state.id } />
       </div>
     );
