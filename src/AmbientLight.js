@@ -1,45 +1,84 @@
-import React, { Component } from 'react';
+import React from 'react';
 import api from './api';
 import M from '../node_modules/materialize-css/dist/js/materialize.min.js';
+import { SketchPicker } from 'react-color';
+import reactCSS from 'reactcss'
 
-class AmbientLight extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      colorValue: props.colorValue || 'fff'
-    };
-  }
-  
-  handleSubmit(e) {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const color = data.get('inputColor');
-    const red = color.slice(1,3);
-    const green = color.slice(3,5);
-    const blue = color.slice(5,7);
+class SketchExample extends React.Component {
+  state = {
+    displayColorPicker: false,
+    hex: '#DF13F1'
+  };
+
+  handleClick = () => {
+    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+  };
+
+  handleClose = () => {
+    this.setState({ displayColorPicker: false })
+  };
+
+  handleChange = (color) => {
+    this.setState({ color: color.rgb, hex: color.hex })
+  };
+
+  handleSubmit(color) {
     const colorData = { 
-      red: parseInt(red, 16), 
-      green: parseInt(green, 16), 
-      blue: parseInt(blue, 16) 
+      red: color.rgb.r,
+      green: color.rgb.g,
+      blue: color.rgb.b
     };
     console.log(colorData);
     api.sendAmbientLight(colorData);
-    M.toast({ html: 'Data has been sent', classes: 'green' });
   }
 
   render() {
+    const styles = reactCSS({
+      'default': {
+        color: {
+          width: '36px',
+          height: '40rem',
+        },
+        swatch: {
+          transition: '100ms',
+          background: this.state.hex,
+          boxShadow: `0px 0px 5px 1px ${ this.state.hex }, 0px 0px 30px ${ this.state.hex }, 0px 0px 37px ${ this.state.hex } inset`,
+          cursor: 'pointer',
+        },
+        popover: {
+          position: 'absolute',
+          zIndex: '2',
+          right: '15%',
+          top: '25%'
+        },
+        cover: {
+          position: 'fixed',
+          top: '0px',
+          right: '0px',
+          bottom: '0px',
+          left: '0px',
+        },
+      },
+    });
+
     return (
-    <React.Fragment>
-      <form onSubmit={ this.handleSubmit.bind(this) }>
-        <input
-        name="inputColor"
-        className="jscolor {hash:true, uppercase:false}"
-        style={{'width':'70%'}} />
-        <button type="submit" className="btn colorPickerSend blue"><i className="material-icons valign-wrapper" >send</i></button>
-      </form>
-    </React.Fragment>
+      <div>
+        <div style={ styles.swatch } onClick={ this.handleClick }>
+          <div style={ styles.color } />
+        </div>
+        { this.state.displayColorPicker ? <div style={ styles.popover }>
+          <div style={ styles.cover } onClick={ this.handleClose }/>
+          <SketchPicker 
+            color={ this.state.hex }
+            onChange={ this.handleChange }
+            disableAlpha={ true }
+            width = {250}
+            onChangeComplete={ this.handleSubmit } />
+        </div> : null }
+
+      </div>
     )
   }
 }
 
-export default AmbientLight;
+export default SketchExample

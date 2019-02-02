@@ -1,0 +1,108 @@
+.main-light-panel {
+  background-color: #1f232d;
+}
+
+.main-light-led {
+  margin: 15px;
+  border-radius: 50%;
+  width: 5.5rem;
+  height: 5.5rem;
+  box-shadow: 0px 0px 2px 1px #ccc, 0px 0px 7px #ccc, 0px 0px 7px #ccc inset;
+  transition: 150ms;
+  transition-timing-function: linear;
+  cursor: pointer;
+  animation: pulse 1s linear infinite alternate;
+}
+
+@keyframes pulse{
+  to {
+    box-shadow: 0px 0px 3px 1px #ccc, 0px 0px 19px #ccc, 0px 0px 13px #ccc inset;
+  }
+}
+
+.rgb-test {
+  margin: auto;
+}
+
+.main-light-led p {
+  /* Make text not selectable */
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  text-align: center;
+  line-height: 2.5rem;
+  font-family:sans-serif;
+  font-weight:100;
+  font-size:24px;
+  color: #999;
+  text-shadow: 0 0 4px #999;
+  transition: 150ms;
+  transition-timing-function: linear;
+}
+
+.main-light-led:hover p {
+  color: #ccc;
+  text-shadow: 0 0 4px #ccc;
+}
+
+/* .main-light-led:hover {
+  background-color: #ddd;
+} */
+
+.main-light-led.disabled {
+  box-shadow: 0px 0px 2px 1px #555, 0px 0px 7px #555, 0px 0px 7px #555 inset;
+  animation: none;
+}
+
+.main-light-led.disabled:hover {
+  box-shadow: 0px 0px 2px 1px #555, 0px 0px 15px #555, 0px 0px 9px #777 inset;
+}
+
+.main-light-led.disabled p {
+  margin-left: -5px;
+  color: #555;
+  text-shadow: 0 0 4px #555;
+  transition: 150ms;
+}
+
+.main-light-led.disabled:hover p {
+  margin-left: -5px;
+  color: #888;
+  text-shadow: 0 0 4px #888;
+}
+
+.main-manage-group {
+  margin: 0 !important;
+  color: #b6d9ff !important;
+}
+
+.main-btn-switch {
+  width: 4rem;
+  margin: .5rem .2rem 0 .2rem;
+  color: #91c5ff;
+  background: transparent;
+  box-shadow: 0px 0px 3px #2d90ff, 0px 0px 1px #2d90ff inset;
+  transition: 100ms;
+}
+
+.main-btn-switch:hover {
+  background: transparent;
+  background: rgba(0, 50, 105, .2);
+  box-shadow: 0px 0px 5px #2d90ff, 0px 0px 3px #2d90ff inset;
+}
+
+/* .main-btn-switch.active {
+  background: #2d90ff;
+  color: #d6e9ff;
+} */
+
+.waves-effect.waves-blue .waves-ripple {
+  /* The alpha value allows the text and background color
+  of the button to still show through. */
+   background-color: rgba(58, 166, 255, 0.514);
+ }
+
+.group-slider {
+  margin-top: 1rem;
+}

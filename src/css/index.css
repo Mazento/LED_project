@@ -1,24 +1,6 @@
 body {
-  background-color: #e9ecef;
-}
-
-.btn-main-light {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently */
-  transition: 150ms !important;
-  margin: 2 rem;
-}
-
-.btn-main-light.red:hover {
-  background-color: red !important;
-}
-
-.btn-main-light.grey:hover {
-  background-color: #8f8f8f !important;
+  /* background-color: #ecf4fc; */ /* Light theme */
+  background-color: #272c38;
 }
 
 .tab:hover {
@@ -26,16 +8,8 @@ body {
   transition: 50ms;
 }
 
-.fuck1 {
-  margin: 2rem !important;
-}
-
-.fuck2 {
-  width: 3.5rem !important;
-}
-
-.fuck3 {
-  margin: 2rem;
+.brand-logo {
+  text-shadow: 0 0 10px #555;
 }
 
 /* .separator {
@@ -112,4 +86,7 @@ body {
 .colorPickerSend i {
   height: 45px;
   margin-bottom: 6px;
+}
+
+.main-container {
 }

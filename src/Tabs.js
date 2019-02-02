@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Tabs extends Component {
+class Tabs extends React.Component {
     render() {
       return (
         <div>
-          <nav className="block light-blue nav-extended">
+          <nav className="block light-blue darken-3 nav-extended">
             <div className="nav-wrapper" style={{'marginLeft': '10rem'}}>
-              <a className="brand-logo">House Control</a>
+              <a className="brand-logo">Control Panel</a>
               <a className="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             </div>
             <div className="row" style={{'marginLeft': '10rem'}}>
