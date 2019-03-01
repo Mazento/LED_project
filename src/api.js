@@ -1,5 +1,5 @@
 const URL_MAIN = "http://192.168.1.250:8080/api/main";
-const URL_AMBIENT = "http://192.168.1.250:8080/api/ambi/all";
+const URL_AMBIENT = "http://192.168.1.250:8080/api/ambi";
 // const URL_MAIN = "http://localhost:4321/api/main";
 // const URL_AMBIENT = "http://localhost:4321/api/ambi/all";
 
