@@ -23,13 +23,17 @@ class SketchExample extends React.Component {
   };
 
   handleSubmit(color) {
-    const colorData = { 
-      red: color.rgb.r,
-      green: color.rgb.g,
-      blue: color.rgb.b
+    const sendData = { 
+      type: 'all',
+      color: {
+        red: color.rgb.r,
+        green: color.rgb.g,
+        blue: color.rgb.b
+      },
+      refreshTime: 1000
     };
-    console.log(colorData);
-    api.sendAmbientLight(colorData);
+    console.log(sendData);
+    api.sendAmbientLight(sendData);
   }
 
   render() {
