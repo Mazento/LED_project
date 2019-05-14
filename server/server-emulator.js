@@ -26,7 +26,7 @@ app
   })
   .post('/api/main/*', (req, res) => {
     let arr = []
-    let resArr = {}
+    const resArr = {}
     console.log(req.url);
     if(req.url == "/api/main/on") {
       arr = req.body;
@@ -41,8 +41,29 @@ app
     // setTimeout(() => res.send(JSON.stringify(resArr)), 3000);
     res.send(JSON.stringify(resArr));
   })
-  .post('/api/ambi/all', (req, res) => {
+  .get('/api/ambi', (req, res) => {
+    console.log(`get /main/status ${req.body}`);
+    res.setHeader('Content-Type', 'application/json');
+    const ambi = {
+      type: 'solid',
+      color: {
+        red: 255,
+        green: 0,
+        blue: 255,
+      },      
+    }
+    res.send(JSON.stringify(ambi));
+  })
+  .post('/api/ambi', (req, res) => {
+    resAmbi = {}
+    resAmbi.type = req.body.type;
+    const colors = {
+      red: req.body.color.red,
+      green: req.body.color.green,
+      blue: req.body.color.blue,
+    };
+    resAmbi.color = colors;
     console.log(req.body);
-    res.send('ok');
+    res.send(JSON.stringify(req.body.color));
   })
   .listen(process.env.PORT || PORT, () => console.log('Ok!'))

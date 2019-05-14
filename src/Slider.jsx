@@ -11,13 +11,16 @@ const styles = {
 
 class SimpleSlider extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = {
-        value: props.value,
-      };
+    super(props);
+    
+    this.state = {
+      value: props.value,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
   };
 
-  handleChange = (event, value) => {
+  handleChange(event, value) {
     this.setState({ value });
   };
 

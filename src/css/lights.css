@@ -1,9 +1,10 @@
 .main-light-panel {
-  background-color: #1f232d;
+  /* background-color: #1f232d !important; */
+  height: 100% !important;
 }
 
 .main-light-led {
-  margin: 15px;
+  margin: auto;
   border-radius: 50%;
   width: 5.5rem;
   height: 5.5rem;
@@ -75,6 +76,9 @@
 .main-manage-group {
   margin: 0 !important;
   color: #b6d9ff !important;
+  text-transform: uppercase;
+  font-size: .9rem !important;
+  margin-top: .5rem !important;
 }
 
 .main-btn-switch {

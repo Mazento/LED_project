@@ -2,7 +2,7 @@ import React from 'react';
 import Tabs from './Tabs';
 import LightSystem from './LightSystem';
 
-class App extends React.Component {
+class Root extends React.Component {
   render() {
     return (
     <React.Fragment>
@@ -13,4 +13,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Root;
