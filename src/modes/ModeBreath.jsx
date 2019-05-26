@@ -34,7 +34,7 @@ class ModeBreath extends React.Component {
         type: 'breath',
         min: 10,
         max: 255,
-        delay: 1000,
+        delay: 100,
         color: this.props.color,
       }
     };
@@ -163,10 +163,10 @@ class ModeBreath extends React.Component {
                 </Grid>
                 <Grid xs={8} item>
                   <Slider 
-                    min={10}
-                    max={1000}
+                    min={1}
+                    max={10000}
                     step={10}
-                    value={delayValue/1000}
+                    value={delayValue}
                     onChange={this.handleChange('delay')}
                   />
                 </Grid>
