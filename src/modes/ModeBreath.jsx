@@ -163,10 +163,10 @@ class ModeBreath extends React.Component {
                 </Grid>
                 <Grid xs={8} item>
                   <Slider 
-                    min={100}
-                    max={10000}
-                    step={100}
-                    value={delayValue}
+                    min={10}
+                    max={1000}
+                    step={10}
+                    value={delayValue/1000}
                     onChange={this.handleChange('delay')}
                   />
                 </Grid>
