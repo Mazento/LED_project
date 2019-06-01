@@ -30,12 +30,9 @@ class ModeRainbow extends React.Component {
     super(props);
 
     this.state = {
-      config: {
-        type: 'rainbow',
-        delay: 1000,
-        brightness: 100,
-        color: this.props.color,
-      }
+      type: 'rainbow',
+      delay: 100,
+      brightness: 100,
     };
   };
 
@@ -101,7 +98,7 @@ class ModeRainbow extends React.Component {
               justify="center"
             >
 
-              {/* Delay value */}
+              {/* Rainbow delay: speed of rainbow */}
               <Grid container alignItems="center" >
                 <Grid xs={3} item>
                   <TextField
@@ -115,7 +112,7 @@ class ModeRainbow extends React.Component {
                 </Grid>
                 <Grid xs={8} item>
                   <Slider 
-                    min={100}
+                    min={1}
                     max={10000}
                     step={100}
                     value={delayValue}
@@ -124,25 +121,25 @@ class ModeRainbow extends React.Component {
                 </Grid>
               </Grid>
 
-              {/* Brightness value */}
+              {/* Brightness */}
               <Grid container alignItems="center" >
-                <Grid xs={3} item>
+                <Grid xs={3} sm={2} item>
                   <TextField
-                    id="delay-value"
-                    label="Brightness"
-                    value={brightnessValue}
-                    onChange={this.handleChange('brightness')}
-                    margin="normal"
-                    variant="outlined"
+                      id="min-value"
+                      label="Min"
+                      value={brightness}
+                      onChange={this.handleChange('brightness')}
+                      margin="normal"
+                      variant="outlined"
                   />
                 </Grid>
-                <Grid xs={8} item>
-                  <Slider 
-                    min={1}
-                    max={255}
-                    step={1}
-                    value={brightnessValue}
-                    onChange={this.handleChange('brightness')}
+                <Grid xs={8} sm={9} item>
+                  <Slider
+                      min={0}
+                      max={255}
+                      step={1}
+                      value={brightness}
+                      onChange={this.handleChange('brightness')}
                   />
                 </Grid>
               </Grid>
