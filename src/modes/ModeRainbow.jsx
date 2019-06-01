@@ -30,9 +30,12 @@ class ModeRainbow extends React.Component {
     super(props);
 
     this.state = {
-      type: 'rainbow',
-      delay: 100,
-      brightness: 100,
+      config: {
+        type: 'rainbow',
+        delay: 100,
+        brightness: 100,
+        color: this.props.color,
+      }      
     };
   };
 
@@ -56,14 +59,14 @@ class ModeRainbow extends React.Component {
    * event.target.value is from text field
    */
   handleChange = name => (event, value) => {
-    this.setState({
+    this.setState(state => ({
       config: {
-        ...this.state.config,
+        ...state.config,
         [name]: (value !== undefined)
         ? value
         : parseInt(event.target.value, 10)
       }
-    });
+    }));
   };
 
   /**
@@ -84,9 +87,9 @@ class ModeRainbow extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const delayValue = this.state.config.delay;
-    const brightnessValue = this.state.config.brightness;
-    const colorValue = this.state.config.color;
+    const delay = this.state.config.delay;
+    const brightness = this.state.config.brightness;
+    const color = this.state.config.color;
 
     return (
       <div className={classes.root}>
@@ -104,7 +107,7 @@ class ModeRainbow extends React.Component {
                   <TextField
                     id="delay-value"
                     label="Delay (ms)"
-                    value={delayValue}
+                    value={delay}
                     onChange={this.handleChange('delay')}
                     margin="normal"
                     variant="outlined"
@@ -115,7 +118,7 @@ class ModeRainbow extends React.Component {
                     min={1}
                     max={10000}
                     step={100}
-                    value={delayValue}
+                    value={delay}
                     onChange={this.handleChange('delay')}
                   />
                 </Grid>
@@ -123,17 +126,17 @@ class ModeRainbow extends React.Component {
 
               {/* Brightness */}
               <Grid container alignItems="center" >
-                <Grid xs={3} sm={2} item>
+                <Grid xs={3} item>
                   <TextField
-                      id="min-value"
-                      label="Min"
+                      id="brightness-value"
+                      label="brightness"
                       value={brightness}
                       onChange={this.handleChange('brightness')}
                       margin="normal"
                       variant="outlined"
                   />
                 </Grid>
-                <Grid xs={8} sm={9} item>
+                <Grid xs={8} item>
                   <Slider
                       min={0}
                       max={255}
@@ -149,7 +152,7 @@ class ModeRainbow extends React.Component {
             {/* Color picker */}
             <div className={classes.colorPicker} >
               <ColorPicker
-                color = {colorValue}
+                color = {color}
                 changeColor={this.handleChangeColor} 
               />
             </div>
