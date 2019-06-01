@@ -25,15 +25,17 @@ const styles = theme => ({
  * Config window for ambient light.
  * Contains color-picker.
  */
-class ModeStrobe extends React.Component {
+class ModeRainbow extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      type: 'strobe',
-      count: 10,
-      strobeDelay: 1000,
-      refreshTime: 1000,
+      config: {
+        type: 'rainbow',
+        delay: 1000,
+        brightness: 100,
+        color: this.props.color,
+      }
     };
   };
 
@@ -58,21 +60,36 @@ class ModeStrobe extends React.Component {
    */
   handleChange = name => (event, value) => {
     this.setState({
-      [name]: (value !== undefined)
-      ? value
-      : parseInt(event.target.value, 10)
+      config: {
+        ...this.state.config,
+        [name]: (value !== undefined)
+        ? value
+        : parseInt(event.target.value, 10)
+      }
     });
   };
 
   /**
    * Update parent component's config state
    */
-  handleConfigChange = () => {
-    this.props.handleConfigChange(this.state);
-  }
+  handleConfigChange() {
+    this.props.handleConfigChange(this.state.config);
+  };
+
+  /**
+   * Local color state for this component.
+   */
+  handleChangeColor = (color) => {
+    this.setState({ 
+      config: {...this.state.config, color}
+    });
+  };
 
   render() {
     const { classes } = this.props;
+    const delayValue = this.state.config.delay;
+    const brightnessValue = this.state.config.brightness;
+    const colorValue = this.state.config.color;
 
     return (
       <div className={classes.root}>
@@ -84,37 +101,14 @@ class ModeStrobe extends React.Component {
               justify="center"
             >
 
-              {/* Count value */}
-              <Grid container alignItems="center" >
-                <Grid xs={3} sm={2} item>
-                  <TextField
-                    id="count-value"
-                    label="Count"
-                    value={this.state.count}
-                    onChange={this.handleChange('count')}
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid xs={8} sm={9} item>
-                  <Slider 
-                    min={0}
-                    max={100}
-                    step={1}
-                    value={this.state.count}
-                    onChange={this.handleChange('count')}
-                  />
-                </Grid>
-              </Grid>
-
-              {/* Strobe delay: pause between switches */}
+              {/* Delay value */}
               <Grid container alignItems="center" >
                 <Grid xs={3} item>
                   <TextField
                     id="delay-value"
                     label="Delay (ms)"
-                    value={this.state.strobeDelay}
-                    onChange={this.handleChange('strobeDelay')}
+                    value={delayValue}
+                    onChange={this.handleChange('delay')}
                     margin="normal"
                     variant="outlined"
                   />
@@ -124,31 +118,31 @@ class ModeStrobe extends React.Component {
                     min={100}
                     max={10000}
                     step={100}
-                    value={this.state.strobeDelay}
-                    onChange={this.handleChange('strobeDelay')}
+                    value={delayValue}
+                    onChange={this.handleChange('delay')}
                   />
                 </Grid>
               </Grid>
 
-              {/* Refresh time: pause between cycles */}
+              {/* Brightness value */}
               <Grid container alignItems="center" >
                 <Grid xs={3} item>
                   <TextField
-                    id="refresh-value"
-                    label="Refresh (ms)"
-                    value={this.state.refreshTime}
-                    onChange={this.handleChange('refreshTime')}
+                    id="delay-value"
+                    label="Brightness"
+                    value={brightnessValue}
+                    onChange={this.handleChange('brightness')}
                     margin="normal"
                     variant="outlined"
                   />
                 </Grid>
                 <Grid xs={8} item>
                   <Slider 
-                    min={100}
-                    max={10000}
-                    step={100}
-                    value={this.state.refreshTime}
-                    onChange={this.handleChange('refreshTime')}
+                    min={1}
+                    max={255}
+                    step={1}
+                    value={brightnessValue}
+                    onChange={this.handleChange('brightness')}
                   />
                 </Grid>
               </Grid>
@@ -157,7 +151,10 @@ class ModeStrobe extends React.Component {
 
             {/* Color picker */}
             <div className={classes.colorPicker} >
-              <ColorPicker changeColor={this.props.changeColor} />
+              <ColorPicker
+                color = {colorValue}
+                changeColor={this.handleChangeColor} 
+              />
             </div>
 
       </div>
@@ -165,4 +162,4 @@ class ModeStrobe extends React.Component {
   }
 }
 
-export default withStyles(styles)(ModeStrobe);
+export default withStyles(styles)(ModeRainbow);

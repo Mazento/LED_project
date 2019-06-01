@@ -19,6 +19,7 @@ import Grow from '@material-ui/core/Grow';
 import ModeSolid from './modes/ModeSolid';
 import ModeBreath from './modes/ModeBreath';
 import ModeStrobe from './modes/ModeStrobe';
+import ModeRainbow from './modes/ModeRainbow';
 
 const styles = theme => ({
   form: {
@@ -109,6 +110,8 @@ class AmbientConfigPure extends React.Component {
         return <ModeBreath {...props} />;
       case 'strobe':
         return <ModeStrobe {...props} />;
+      case 'rainbow':
+        return <ModeRainbow {...props} />;
       default:
         return null;
     }
@@ -147,6 +150,7 @@ class AmbientConfigPure extends React.Component {
                   <MenuItem value='solid'>Solid</MenuItem>
                   <MenuItem value="breath">Breath</MenuItem>
                   <MenuItem value="strobe">Strobe</MenuItem>
+                  <MenuItem value="rainbow">Rainbow</MenuItem>
                 </Select>
               </FormControl>
               <FormControlLabel
@@ -161,6 +165,7 @@ class AmbientConfigPure extends React.Component {
                 label="Live update"
               />
             </form>
+            
             {/* Load config form corresponding to the selected mode */}
             {
               this.getConfigForm(this.state.mode, {
