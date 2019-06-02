@@ -6,7 +6,7 @@ const DEV_MODE = false;
 
 export default {
   async getMainLight() {
-    const response = await fetch(`${URL_MAIN}/status`, { method: "GET" });
+    const response = await fetch(`${URL_MAIN}`, { method: "GET" });
     const data = await response.json();
     return data;
   },
