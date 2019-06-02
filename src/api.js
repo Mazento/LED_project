@@ -1,8 +1,8 @@
-const URL_MAIN = "http://192.168.1.250:8080/api/main";
-const URL_AMBIENT = "http://192.168.1.250:8080/api/ambi";
+const URL_MAIN = "http://192.168.1.250:9090/api/main";
+const URL_AMBIENT = "http://192.168.1.250:9090/api/ambi";
 const URL_MAIN_DEV = "http://localhost:4321/api/main";
 const URL_AMBIENT_DEV = "http://localhost:4321/api/ambi";
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 export default {
   async getMainLight() {
