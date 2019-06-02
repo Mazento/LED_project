@@ -15,7 +15,7 @@ export default {
     const headers = DEV_MODE ? { "Content-Type": "application/json" } : { "Content-Type": "text/plain" };
     const URL = DEV_MODE ? URL_MAIN_DEV : URL_MAIN;
 
-    const response = await fetch(`${URL}/${cmd}`, {
+    const response = await fetch(URL, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(gpioStatus)

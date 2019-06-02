@@ -28,7 +28,6 @@ class MainLightElement extends React.Component {
       this.state = {
         id: props.id,
         status: props.status
-        // status: true
       };
   };
 
@@ -53,7 +52,7 @@ class MainLightLed extends React.Component {
       super(props);
       this.state = {
         id: props.id,
-        status: props.status, // on-off (true : false)
+        status: props.status, // on-off (1 : 0)
         dimming: props.dimming, // dimming percentage (0-100)
         transition: 'scale-in' // animation on load
       };
@@ -91,7 +90,7 @@ class MainLightLed extends React.Component {
 /**
  * Controls group of Main Light LEDs
  * Options:
- * - off/on
+ * - 0/1
  * - dimming %
  */
 class ManageGroupPure extends React.Component {  
@@ -123,7 +122,7 @@ class ManageGroupPure extends React.Component {
                 variant="outlined"
                 color="primary"
                 classes={{ label: classes.label }}
-                onClick={ () => updateStatus(gpioList, false) }
+                onClick={ () => updateStatus(gpioList, 0) }
               >
                 OFF
               </Button>
@@ -133,7 +132,7 @@ class ManageGroupPure extends React.Component {
                 variant="outlined"
                 color="primary"
                 classes={{ label: classes.label }}
-                onClick={ () => updateStatus(gpioList, true) }
+                onClick={ () => updateStatus(gpioList, 1) }
               >
                 ON
               </Button>

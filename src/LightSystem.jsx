@@ -43,7 +43,7 @@ class LightSystem extends React.Component {
   // Then get ambi status.
   async componentDidMount() {
     await api.getMainLight()
-    .then(r => this.setState({ mainLightArray: r || {} }))
+    .then(res => this.setState({ mainLightArray: res || {} }))
     .then(this.getAmbientLight());
   };
 
@@ -74,12 +74,15 @@ class LightSystem extends React.Component {
 
   // Turn on/off main light gpios (send to server).
   // gpioList - list of gpios
-  // newStatus - their new value (true-false)
+  // newStatus - their new value (1-0)
   async updateStatus(gpioList, newStatus) {
+    const resArr = {}
     gpioList = (Array.isArray(gpioList) ? gpioList : [gpioList]);
-    console.log(`gpioList:${gpioList}`);
-    console.log(`newStatus:${newStatus}`);
-    await api.sendMainLight(gpioList, newStatus ? "on" : "off")
+    gpioList.map(x => { resArr[x] = newStatus ? 1 : 0 });
+    console.log(`gpioList: ${gpioList}`);
+    console.log(`newStatus: ${newStatus}`);
+    console.log(resArr);
+    await api.sendMainLight(resArr)
     .then(res => this.setState({ mainLightArray: res || {} }));
   };
   createGpioList(first, last) {

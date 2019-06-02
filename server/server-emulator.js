@@ -24,22 +24,13 @@ app
     }
     res.send(JSON.stringify(gpios));
   })
-  .post('/api/main/*', (req, res) => {
-    let arr = []
-    const resArr = {}
+  .post('/api/main', (req, res) => {
     console.log(req.url);
-    if(req.url == "/api/main/on") {
-      arr = req.body;
-      arr.forEach(x => { resArr[x] = 1 });
-    }
-    else if(req.url == "/api/main/off") {
-      arr = req.body;
-      arr.forEach(x => { resArr[x] = 0 });
-    }
-    console.log(resArr);
+    const arr = req.body;
+    console.log(arr);
     // Emulate lag
     // setTimeout(() => res.send(JSON.stringify(resArr)), 3000);
-    res.send(JSON.stringify(resArr));
+    res.send(JSON.stringify(arr));
   })
   .get('/api/ambi', (req, res) => {
     console.log(`get /main/status ${req.body}`);
