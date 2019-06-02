@@ -22,7 +22,7 @@ const styles = theme => ({
   },
 });
 
-const defaultColor = {red: 136, green: 136, blue: 136};
+const defaultColor = {r: 136, g: 136, b: 136};
 
 class LightSystem extends React.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class LightSystem extends React.Component {
       // List of all gpios paired with their values (true-false)
       mainLightArray: {},
       ambientLightMode: '',
-      ambientLightColor: defaultColor,
+      ambientLightColor: this.props.color || defaultColor,
     };
 
     this.updateStatus = this.updateStatus.bind(this);
@@ -51,6 +51,7 @@ class LightSystem extends React.Component {
   async getAmbientLight() {
     await api.getAmbientLight()
     .then(res => {
+      console.log(res.color);
       this.setState({
         ambientLightMode: res.type,
         ambientLightColor: res.color,
@@ -79,9 +80,8 @@ class LightSystem extends React.Component {
     const resArr = {}
     gpioList = (Array.isArray(gpioList) ? gpioList : [gpioList]);
     gpioList.map(x => { resArr[x] = newStatus ? 1 : 0 });
-    console.log(`gpioList: ${gpioList}`);
-    console.log(`newStatus: ${newStatus}`);
-    console.log(resArr);
+    // console.log(`gpioList: ${gpioList}`);
+    // console.log(`newStatus: ${newStatus}`);
     await api.sendMainLight(resArr)
     .then(res => this.setState({ mainLightArray: res || {} }));
   };

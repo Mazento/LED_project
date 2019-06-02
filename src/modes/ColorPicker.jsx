@@ -13,32 +13,25 @@ class ColorPicker extends React.Component {
     this.props.changeColor(this.converOutputRGB(color));
   };
 
-  // Convert (red, green, blue) to (r, g, b)
-  convertInputRGB(color) {
-    return ({
-      r: color.red,
-      g: color.green,
-      b: color.blue,
-    });
-  };
-
-  // Convert  (r, g, b) to (red, green, blue)
+  // Extract (r, g, b)
   converOutputRGB(color) {
     return ({
-      red: color.rgb.r,
-      green: color.rgb.g,
-      blue: color.rgb.b,
+      r: color.rgb.r,
+      g: color.rgb.g,
+      b: color.rgb.b,
     });
   };
 
   render() {
+    const { color } = this.props;
+
     return (
       <SketchPicker
-        color={ this.convertInputRGB(this.props.color) }
+        color={color}
         // onChange={ this.props.changeColor(color) }
-        disableAlpha={ true }
-        width = { 250 }
-        onChangeComplete={ this.handleChangeColor }
+        disableAlpha={true}
+        width={250}
+        onChangeComplete={this.handleChangeColor}
       />
     )
   };

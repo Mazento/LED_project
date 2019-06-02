@@ -38,9 +38,9 @@ app
     const ambi = {
       type: 'solid',
       color: {
-        red: 255,
-        green: 0,
-        blue: 255,
+        r: 255,
+        g: 0,
+        b: 255,
       },      
     }
     res.send(JSON.stringify(ambi));
@@ -49,12 +49,12 @@ app
     resAmbi = {}
     resAmbi.type = req.body.type;
     const colors = {
-      red: req.body.color.red,
-      green: req.body.color.green,
-      blue: req.body.color.blue,
+      r: req.body.color.r,
+      g: req.body.color.g,
+      b: req.body.color.b,
     };
     resAmbi.color = colors;
-    console.log(req.body);
-    res.send(JSON.stringify(req.body.color));
+    console.log(resAmbi);
+    res.send(JSON.stringify(resAmbi));
   })
   .listen(process.env.PORT || PORT, () => console.log('Ok!'))
