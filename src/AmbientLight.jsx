@@ -37,7 +37,7 @@ class AmbientLight extends React.Component {
 
     // TODO: revamp after material-ui 4.x is released (use value from props)
     render() {
-        const color = Object.values(this.state.color);
+        const color = Object.values(this.state.color).slice(0,3);
         const styles = reactCSS({
             'default': {
                 color: {
