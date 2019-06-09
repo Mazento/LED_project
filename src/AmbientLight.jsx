@@ -8,65 +8,65 @@ import AmbientConfig from './AmbientConfig';
  * Opens config on click.
  */
 class AmbientLight extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      color: this.props.color,
-      open: false,
+        this.state = {
+            color: this.props.color,
+            open: false,
+        };
     };
-  };
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.color !== this.state.color)
-      this.setState({ color: newProps.color });
-  };
+    componentWillReceiveProps(newProps) {
+        if (newProps.color !== this.state.color)
+            this.setState({ color: newProps.color });
+    };
 
-  handleChangeColor = (color) => {
-    this.setState({ color: color.rgb, hex: color.hex });
-  }
-  
-  handleOpen = () => {
-    this.setState({ open: true });
-    // this.setState({ displayColorPicker: !this.state.displayColorPicker })
-  };
+    handleChangeColor = (color) => {
+        this.setState({ color: color.rgb, hex: color.hex });
+    }
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+    handleOpen = () => {
+        this.setState({ open: true });
+        // this.setState({ displayColorPicker: !this.state.displayColorPicker })
+    };
 
-  // TODO: revamp after material-ui 4.x is released (use value from props)
-  render() {
-    const color = Object.values(this.state.color);
-    const styles = reactCSS({
-      'default': {
-        color: {
-          width: '5rem',
-          height: '36rem',
-        },
-        swatch: {
-          transition: '100ms',
-          background: `rgb(${ color })`,
-          boxShadow: `0px 0px 5px 1px rgb(${ color }), 0px 0px 30px rgb(${ color }), 0px 0px 37px rgb(${ color }) inset`,
-          cursor: 'pointer',
-        },
-      },
-    });
+    handleClose = () => {
+        this.setState({ open: false });
+    };
 
-    return (
-      <React.Fragment>
-        <div style={ styles.swatch } onClick={ this.handleOpen }>
-          <div style={ styles.color } />
-        </div>
-        <AmbientConfig
-          updateAmbiConfig={this.props.updateAmbiConfig}
-          handleClose={this.handleClose}
-          color={this.props.color}
-          open={this.state.open}
-        />
-      </React.Fragment>
-    )
-  };
+    // TODO: revamp after material-ui 4.x is released (use value from props)
+    render() {
+        const color = Object.values(this.state.color);
+        const styles = reactCSS({
+            'default': {
+                color: {
+                    width: '5rem',
+                    height: '36rem',
+                },
+                swatch: {
+                    transition: '100ms',
+                    background: `rgb(${ color })`,
+                    boxShadow: `0px 0px 5px 1px rgb(${ color }), 0px 0px 30px rgb(${ color }), 0px 0px 37px rgb(${ color }) inset`,
+                    cursor: 'pointer',
+                },
+            },
+        });
+
+        return (
+            <React.Fragment>
+                <div style={ styles.swatch } onClick={ this.handleOpen }>
+                    <div style={ styles.color } />
+                </div>
+                <AmbientConfig
+                    updateAmbiConfig={this.props.updateAmbiConfig}
+                    handleClose={this.handleClose}
+                    color={this.props.color}
+                    open={this.state.open}
+                />
+            </React.Fragment>
+        )
+    };
 }
 
 export default AmbientLight;

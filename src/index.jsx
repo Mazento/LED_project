@@ -9,24 +9,24 @@ import './css/index.css';
 import './css/lights.css';
 
 const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-    primary: { main: '#91c5ff', },
-    secondary: { main: '#00BAFF', },
-    background: {
-      paper: '#1f232d',
-      default: "#272c38", 
+    palette: {
+        type: 'dark',
+        primary: { main: '#91c5ff', },
+        secondary: { main: '#00BAFF', },
+        background: {
+            paper: '#1f232d',
+            default: "#272c38",
+        },
     },
-  },
-  typography: {
-    useNextVariants: true,
-  },
+    typography: {
+        useNextVariants: true,
+    },
 });
 
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <CssBaseline />
-    <Root />
-  </MuiThemeProvider>,
-  document.getElementById('root')
+    <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <Root />
+    </MuiThemeProvider>,
+    document.getElementById('root')
 );
