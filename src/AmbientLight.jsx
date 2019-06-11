@@ -54,7 +54,7 @@ class AmbientLight extends React.Component {
         });
 
         return (
-            <React.Fragment>
+            <>
                 <div style={ styles.swatch } onClick={ this.handleOpen }>
                     <div style={ styles.color } />
                 </div>
@@ -64,7 +64,7 @@ class AmbientLight extends React.Component {
                     color={this.props.color}
                     open={this.state.open}
                 />
-            </React.Fragment>
+            </>
         )
     };
 }

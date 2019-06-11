@@ -5,10 +5,7 @@ import LightSystem from './LightSystem';
 class Root extends React.Component {
     render() {
         return (
-            <React.Fragment>
-                {/* <Tabs /> */}
-                <LightSystem />
-            </React.Fragment>
+            <LightSystem/>
         )
     }
 }
