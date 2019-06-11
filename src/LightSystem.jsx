@@ -23,7 +23,7 @@ const styles = () => ({
     },
 });
 
-const defaultColor = {r: 136, g: 136, b: 136};
+const defaultColor = {R: 136, G: 136, B: 136};
 
 class LightSystem extends React.Component {
     constructor(props) {
@@ -52,7 +52,6 @@ class LightSystem extends React.Component {
     async getAmbientLight() {
         await api.getAmbientLight()
             .then(res => {
-                console.log(res.color);
                 this.setState({
                     ambientLightMode: res.type,
                     ambientLightColor: res.color,

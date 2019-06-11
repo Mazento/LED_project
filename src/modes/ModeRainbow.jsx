@@ -32,7 +32,7 @@ class ModeRainbow extends React.Component {
         this.state = {
             config: {
                 type: 'rainbow',
-                delay: 100,
+                delay: 1,
                 brightness: 100,
                 color: this.props.color,
             }
@@ -115,9 +115,9 @@ class ModeRainbow extends React.Component {
                         </Grid>
                         <Grid xs={8} item>
                             <Slider
-                                min={1}
-                                max={10000}
-                                step={100}
+                                min={0}
+                                max={500}
+                                step={1}
                                 value={delay}
                                 onChange={this.handleChange('delay')}
                             />
